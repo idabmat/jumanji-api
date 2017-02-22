@@ -14,5 +14,4 @@ test:
 production:
   <<: *default
   database: jumanji-api_production
-  username: jumanji-api
-  password: <%= ENV['JUMANJI-API_DATABASE_PASSWORD'] %>
+  host: ENV['DATABASE_URL']
