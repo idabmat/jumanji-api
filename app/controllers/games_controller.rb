@@ -3,4 +3,13 @@ class GamesController < ApplicationController
     game = Game.create
     render json: game
   end
+
+  def start
+    game = Game.includes(:players).find(params[:id])
+    if game.can_start
+      head :ok
+    else
+      render json: game.errors.messages, status: 422
+    end
+  end
 end
