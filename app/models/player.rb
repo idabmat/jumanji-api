@@ -3,4 +3,5 @@ class Player < ApplicationRecord
 
   validates :name, presence: true
   validates :logins, presence: true, length: { minimum: 1}
+  validates :position, presence: true, inclusion: { in: 0..40 }
 end
