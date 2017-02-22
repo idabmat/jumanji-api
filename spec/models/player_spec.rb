@@ -21,4 +21,28 @@ RSpec.describe Player, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:game) }
   end
+
+  describe 'instance methods' do
+    let(:player) { create(:player) }
+
+    context 'rolls_a' do
+      it 'updates the player position' do
+        player.update(position: 5)
+        player.rolls_a(8)
+        expect(player.position).to eq(13)
+      end
+
+      it 'does not update if it goes above 40' do
+        player.update(position: 35)
+        player.rolls_a(6)
+        expect(player.position).to eq(35)
+      end
+
+      it 'does not update if roll value is invalid' do
+        player.update(position: 4)
+        player.rolls_a(9)
+        expect(player.position).to eq(4)
+      end
+    end
+  end
 end
