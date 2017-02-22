@@ -1,6 +1,6 @@
 general:
-  deployment:
-    production:
-      branch: master
-      heroku:
-        appname: calm-fjord-15064
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: calm-fjord-15064
