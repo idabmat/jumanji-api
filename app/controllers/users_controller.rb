@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
   def create
-    @player = Player.create(user_params)
-    render json: @player
+    @player = Player.new(user_params)
+    if @player.save
+      render json: @player
+    else
+      render json: @player.errors.messages, status: 422
+    end
   end
 
   protected
