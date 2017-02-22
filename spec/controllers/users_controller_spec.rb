@@ -15,7 +15,7 @@ RSpec.describe UsersController, type: :controller do
 
       it "returns the user id" do
         post :create, params: params, format: :json
-        expect(JSON.parse(response.body)['data']['id']).to eq('2')
+        expect(JSON.parse(response.body)['data']['id']).to eq('3')
       end
     end
 

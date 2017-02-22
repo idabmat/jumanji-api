@@ -13,5 +13,4 @@ RSpec.describe GamesController, type: :controller do
       expect(JSON.parse(response.body)['data']['id']).to eq('2')
     end
   end
-
 end
