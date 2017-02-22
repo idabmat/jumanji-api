@@ -11,6 +11,6 @@ class UsersController < ApplicationController
   protected
 
   def user_params
-    params.permit(:name, logins: [:facebook_token, :phone, :twitter_token])
+    params.permit(:name, :game_id, logins: [:facebook_token, :phone, :twitter_token])
   end
 end
