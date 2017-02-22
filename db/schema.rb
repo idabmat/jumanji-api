@@ -10,17 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222110715) do
+ActiveRecord::Schema.define(version: 20170222125503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "games", force: :cascade do |t|
+    t.datetime "started_on"
+    t.datetime "ended_on"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "players", force: :cascade do |t|
     t.string   "name",                    null: false
     t.jsonb    "logins",     default: {}, null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "game_id",                 null: false
+    t.index ["game_id"], name: "index_players_on_game_id", using: :btree
     t.index ["logins"], name: "index_players_on_logins", using: :gin
   end
 
+  add_foreign_key "players", "games"
 end

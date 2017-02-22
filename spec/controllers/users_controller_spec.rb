@@ -4,8 +4,9 @@ RSpec.describe UsersController, type: :controller do
 
   describe "post #create" do
     context 'with valid params' do
+      let(:game) { create(:game) }
       let(:login_details) { { facebook_token: 'abc123', phone: '1234567890' } }
-      let(:params) { { name: 'Foo', logins: login_details } }
+      let(:params) { { name: 'Foo', game_id: game.id, logins: login_details } }
 
       it "returns http success" do
         post :create, params: params, format: :json
