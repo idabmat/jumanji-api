@@ -6,7 +6,7 @@ class GamesController < ApplicationController
 
   def start
     game = Game.includes(:players).find(params[:id])
-    if game.can_start
+    if game.start
       head :ok
     else
       render json: game.errors.messages, status: 422
